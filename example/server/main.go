@@ -22,7 +22,10 @@ func (m *MyServer) SayHello(ctx context.Context, request *message.HelloRequest) 
 
 func main() {
 
-	listen, err := net.Listen("tcp", ":8888")
+	r := NewRegister()
+	go r.Register()
+
+	listen, err := net.Listen("tcp", ":8889")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
